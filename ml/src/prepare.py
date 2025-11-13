@@ -19,12 +19,16 @@ def prepare(path):
 
     scaler = StandardScaler()
     x_train_scaled = scaler.fit_transform(x_train)
+    x_test_scaled = scaler.transform(x_test)
     x_train_scaled = pd.DataFrame(
         x_train_scaled, columns=x_train.columns, index=x_train.index
     )
+    x_test_scaled = pd.DataFrame(
+        x_test_scaled, columns=x_test.columns, index=x_test.index
+    )
 
     df_train = pd.concat([x_train_scaled, y_train], axis=1).round(6)
-    df_test = pd.concat([x_test, y_test], axis=1)
+    df_test = pd.concat([x_test_scaled, y_test], axis=1).round(6)
 
     prepared = path.parent.parent / "prepared"
     df_train.to_csv(prepared / "train.csv", header=True, index=False)
