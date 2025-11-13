@@ -23,7 +23,8 @@ stages:
   evaluate:
     cmd: python src/evaluate.py
     deps:
+    - data/prepared/test.csv
     - model/model.joblib
     - src/evaluate.py
     metrics:
-    - metrics/accuracy.json
+    - metrics/metrics.json
