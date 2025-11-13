@@ -3,6 +3,8 @@ scipy
 pandas
 matplotlib
 scikit-learn
+jupyterlab
+notebook
 python-dotenv
 pytest
 dvc

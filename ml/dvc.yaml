@@ -1,8 +1,14 @@
 stages:
+  ingest:
+    cmd: python src/ingest.py
+    deps:
+    - src/ingest.py
+    outs:
+    - data/raw/iris.csv
   prepare:
     cmd: python src/prepare.py
     deps:
-    - data/raw
+    - data/raw/iris.csv
     - src/prepare.py
     outs:
     - data/prepared/test.csv
