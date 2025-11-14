@@ -12,3 +12,23 @@ stages:
       hash: md5
       md5: b13ce79d399e96e37d6649843a5c619d
       size: 2911
+  prepare:
+    cmd: python ml/src/prepare.py
+    deps:
+    - path: ml/data/raw/iris.csv
+      hash: md5
+      md5: b13ce79d399e96e37d6649843a5c619d
+      size: 2911
+    - path: ml/src/prepare.py
+      hash: md5
+      md5: 3c3b190438b5e80bd13c2e83dc097f47
+      size: 1278
+    outs:
+    - path: ml/data/prepared/test.csv
+      hash: md5
+      md5: f3956dd811130e46cebb285938f59352
+      size: 1280
+    - path: ml/data/prepared/train.csv
+      hash: md5
+      md5: 05f768d9730f59dee559194da8e99f21
+      size: 4936
