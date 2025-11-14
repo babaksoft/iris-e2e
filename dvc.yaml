@@ -13,3 +13,10 @@ stages:
     outs:
     - ml/data/prepared/test.csv
     - ml/data/prepared/train.csv
+  train:
+    cmd: python ml/src/train.py
+    deps:
+    - ml/data/prepared/train.csv
+    - ml/src/train.py
+    outs:
+    - ml/model/model.joblib
