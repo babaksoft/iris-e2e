@@ -48,3 +48,23 @@ stages:
       hash: md5
       md5: 003a79ff39b1c53fe284e22fbd5251de
       size: 1295
+  evaluate:
+    cmd: python ml/src/evaluate.py
+    deps:
+    - path: ml/data/prepared/test.csv
+      hash: md5
+      md5: f3956dd811130e46cebb285938f59352
+      size: 1280
+    - path: ml/model/model.joblib
+      hash: md5
+      md5: 003a79ff39b1c53fe284e22fbd5251de
+      size: 1295
+    - path: ml/src/evaluate.py
+      hash: md5
+      md5: 60823dacacb367c1625f25b3e78a682d
+      size: 910
+    outs:
+    - path: ml/metrics/metrics.json
+      hash: md5
+      md5: a27b2d780313ba658b28140efab503d5
+      size: 40

@@ -20,3 +20,12 @@ stages:
     - ml/src/train.py
     outs:
     - ml/model/model.joblib
+  evaluate:
+    cmd: python ml/src/evaluate.py
+    deps:
+    - ml/data/prepared/test.csv
+    - ml/model/model.joblib
+    - ml/src/evaluate.py
+    metrics:
+    - ml/metrics/metrics.json:
+        cache: false
