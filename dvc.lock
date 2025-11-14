@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  ingest:
+    cmd: python ml/src/ingest.py
+    deps:
+    - path: ml/src/ingest.py
+      hash: md5
+      md5: bfda0b4287f5f9a664ea80fe4deed97c
+      size: 515
+    outs:
+    - path: ml/data/raw/iris.csv
+      hash: md5
+      md5: b13ce79d399e96e37d6649843a5c619d
+      size: 2911

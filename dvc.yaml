@@ -1,0 +1,7 @@
+stages:
+  ingest:
+    cmd: python ml/src/ingest.py
+    deps:
+    - ml/src/ingest.py
+    outs:
+    - ml/data/raw/iris.csv
