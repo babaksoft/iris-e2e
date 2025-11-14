@@ -1,0 +1,30 @@
+stages:
+  ingest:
+    cmd: python ml/src/ingest.py
+    deps:
+    - ml/src/ingest.py
+    outs:
+    - ml/data/raw/iris.csv
+  prepare:
+    cmd: python ml/src/prepare.py
+    deps:
+    - ml/data/raw/iris.csv
+    - ml/src/prepare.py
+    outs:
+    - ml/data/prepared/test.csv
+    - ml/data/prepared/train.csv
+  train:
+    cmd: python ml/src/train.py
+    deps:
+    - ml/data/prepared/train.csv
+    - ml/src/train.py
+    outs:
+    - ml/model/model.joblib
+  evaluate:
+    cmd: python ml/src/evaluate.py
+    deps:
+    - ml/data/prepared/test.csv
+    - ml/model/model.joblib
+    - ml/src/evaluate.py
+    metrics:
+    - ml/metrics/metrics.json
