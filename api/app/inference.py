@@ -2,15 +2,11 @@ from pathlib import Path
 import os
 
 from joblib import load
-import pandas as pd
-from sklearn.datasets import load_iris
 
 from iris import IrisModel
 
-
-def get_iris_name(predicted: int):
-    iris = load_iris()
-    return iris.target_names[predicted]
+feature_names = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
+iris_names = ["setosa", "versicolor", "virginica"]
 
 
 def predict_iris(iris: IrisModel) -> str:
@@ -23,10 +19,7 @@ def predict_iris(iris: IrisModel) -> str:
     scaler = model["scaler"]
     clf = model["classifier"]
 
-    features = scaler.feature_names_in_
-    x = [float(iris.__dict__[col]) for col in features]
-    df = pd.DataFrame([x], columns=features)
-    df_scaled = scaler.transform(df)
-    df_scaled = pd.DataFrame(df_scaled, columns=features)
-    prediction = clf.predict(df_scaled)
-    return get_iris_name(prediction[0])
+    x = [float(iris.__dict__[col]) for col in feature_names]
+    x_scaled = scaler.transform([x])
+    prediction = clf.predict(x_scaled)
+    return iris_names[prediction[0]]

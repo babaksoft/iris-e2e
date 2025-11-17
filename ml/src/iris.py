@@ -45,8 +45,8 @@ class IrisClassifier:
         )
 
         scaler = StandardScaler()
-        x_train_scaled = scaler.fit_transform(x_train)
-        x_test_scaled = scaler.transform(x_test)
+        x_train_scaled = scaler.fit_transform(x_train.values)
+        x_test_scaled = scaler.transform(x_test.values)
         x_train_scaled = pd.DataFrame(
             x_train_scaled, columns=x_train.columns, index=x_train.index
         )
@@ -84,7 +84,7 @@ class IrisClassifier:
 
         # Start with a baseline model
         lr = LogisticRegression(solver="saga", random_state=rs)
-        trained = lr.fit(x_train, y_train)
+        trained = lr.fit(x_train.values, y_train.values)
         model = load(model_path)
         model["classifier"] = trained
         dump(model, model_path)
