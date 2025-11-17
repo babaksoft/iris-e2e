@@ -5,8 +5,8 @@ stages:
     deps:
     - path: ml/src/ingest.py
       hash: md5
-      md5: bfda0b4287f5f9a664ea80fe4deed97c
-      size: 515
+      md5: c0d0d4cf8724beb8fecc57353a548ba1
+      size: 270
     outs:
     - path: ml/data/raw/iris.csv
       hash: md5
@@ -41,8 +41,8 @@ stages:
       size: 4936
     - path: ml/src/train.py
       hash: md5
-      md5: 1b24a96391fd1c677cc99ea0ffc33faa
-      size: 2054
+      md5: 4a235d9a5bf19f71d4303b662471e44c
+      size: 391
     outs:
     - path: ml/model/model.joblib
       hash: md5
@@ -61,8 +61,8 @@ stages:
       size: 2105
     - path: ml/src/evaluate.py
       hash: md5
-      md5: 39d20c5aaaf0e26b24a09efed0f1c2ee
-      size: 924
+      md5: faffdfb3532ece564b8b307e694fa1d0
+      size: 379
     outs:
     - path: ml/metrics/metrics.json
       hash: md5
