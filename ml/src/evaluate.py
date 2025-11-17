@@ -1,7 +1,7 @@
 from pathlib import Path
-from joblib import load
 import json
 
+from joblib import load
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score
 
@@ -10,7 +10,7 @@ def evaluate(data_path, model_path, metrics_path: Path):
     df_test = pd.read_csv(data_path)
     x_test = df_test.iloc[:, :-1]
     y_test = df_test[df_test.columns[-1]]
-    model = load(model_path)
+    model = load(model_path)["classifier"]
 
     y_predicted = model.predict(x_test)
     accuracy = accuracy_score(y_test, y_predicted)

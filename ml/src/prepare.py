@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from joblib import dump
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -33,6 +34,13 @@ def prepare(path):
     prepared = path.parent.parent / "prepared"
     df_train.to_csv(prepared / "train.csv", header=True, index=False)
     df_test.to_csv(prepared / "test.csv", header=True, index=False)
+
+    model_path = path.parent.parent.parent / "model/model.joblib"
+    model = {
+        "scaler": scaler,
+        "classifier": None
+    }
+    dump(model, model_path)
 
 
 if __name__ == "__main__":
